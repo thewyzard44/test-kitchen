@@ -48,6 +48,9 @@ module Kitchen
           shell: shell,
         }.merge(additional_options)
 
+        event = { event: "command-line", properties: { action: task, class: command, args: args } }
+        Kitchen::Telemetry.send(event)
+
         str_const = Thor::Util.camel_case(command)
         klass = ::Kitchen::Command.const_get(str_const)
         klass.new(args, options, command_options).call
@@ -299,7 +302,7 @@ module Kitchen
 
         > kitchen driver create foobar
 
-        will create a project scaffold for a RubyGem called `kitchen-foobar'.
+        will create a project scaffold for a RubyGem called `kitchen-foobar`.
       D
       tasks["create"].options = Kitchen::Generator::DriverCreate.class_options
 
