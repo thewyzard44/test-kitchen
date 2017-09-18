@@ -5,7 +5,7 @@ gem "rack", "< 2.0"
 
 gem "train", "~> 0.22"
 
-gem "chef-telemetry", git: "https://github.com/thommay/chef-telemetry.git"
+gem "chef-telemetry", git: "https://github.com/chef/chef-telemetry.git"
 
 group :integration do
   gem "berkshelf"
